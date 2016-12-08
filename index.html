@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet"  href="css/jquery.mobile.structure.css" />
+		<link rel="stylesheet"  href="css/style.css" />
+		<!-- <link rel="stylesheet" href="css/jquery.mobile.theme.css" /> -->
+
+		<!--Import Google Icon Font-->
+		 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		 <!--Import materialize.css-->
+		 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+		 <!--Let browser know website is optimized for mobile-->
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+         <script>
+			var userAgent = navigator.userAgent + '';
+			if (userAgent.indexOf('iPhone') > -1) {
+				document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+				var mobile_system = 'iphone';
+			} else if (userAgent.indexOf('Android') > -1) {
+				document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+				var mobile_system = 'android';
+			} else {
+				var mobile_system = '';
+			}
+		</script>
+
+		<script src="scripts/jquery.js"></script>
+		<!-- your scripts here -->
+
+		<script src="scripts/jquery.mobile.js"></script>
+
+
+
+
+		<script type="text/javascript">
+		var map;
+		document.addEventListener("deviceready", function() {
+		  var div = document.getElementById("map_canvas");
+
+		  // Initialize the map view
+		  map = plugin.google.maps.Map.getMap(div);
+
+		  // Wait until the map is ready status.
+		  map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+		}, false);
+
+		function onMapReady() {
+		  var button = document.getElementById("button");
+		  button.addEventListener("click", onBtnClicked);
+		}
+
+		function onBtnClicked() {
+
+		  // Move to the position with animation
+		  map.animateCamera({
+		    target: {lat: 37.422359, lng: -122.084344},
+		    zoom: 17,
+		    tilt: 60,
+		    bearing: 140,
+		    duration: 5000
+		  }, function() {
+
+		    // Add a maker
+		    map.addMarker({
+		      position: {lat: 37.422359, lng: -122.084344},
+		      title: "Welecome to \n" +
+		             "Cordova GoogleMaps plugin for iOS and Android",
+		      snippet: "This plugin is awesome!",
+		      animation: plugin.google.maps.Animation.BOUNCE
+		    }, function(marker) {
+
+		      // Show the info window
+		      marker.showInfoWindow();
+
+		      // Catch the click event
+		      marker.on(plugin.google.maps.event.INFO_CLICK, function() {
+
+		        // To do something...
+		        alert("Hello world!");
+
+		      });
+		    });
+		  });
+		}
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<title>Chercher</title>
+	</head>
+	<body>
+
+
+
+
+		<div data-role="page" id="login" class="blue lighten-4">
+
+			 <!-- <div data-role="header" style="text-shadow: none">
+
+		 	</div> -->
+
+			<div data-role="content" style="text-shadow: none">
+
+
+				<div  style="padding-top: 20%;">
+	 <div class="col s12">
+		 <div class="card lighten-2 z-depth-4 card-panel">
+			 <div class="card-content">
+								<form class="login-form" style="margin-top:10%;height:58%;" action="" method="POST" onsubmit='validate()'>
+									 <center><div class="card-title"> <span style="color: #0d47a1; font-weight: bold; font-size: large; face:capitals">CHERCHER</span><br></div><center>
+	               <img src="img/user.png" height="40"><input style="color: #0d47a1;" type="text" name="username" id="Username" placeholder="Enter Username"/>
+	               <img src="img/password.png" height="35"><input style="color: #0d47a1;" type="password" name="password" id="Password" placeholder="Enter Password"/>
+	               <!-- <input class="btn waves-effect blue lighten-1" style="color: red;" id="buttonAdd" type="button" onclick="LoginUser()"  name="Login" value="Log In"> -->
+	               <!-- <br><a style="margin-left:20%;" id="pwordForgot" href="" onclick="email()"></a> -->
+								 <div class="row">
+				          	<div class="input-field col s12">
+				            	<a href="#" onclick="LoginUser()" class="btn waves-effect waves-light col s12 blue darken-4">Login</a>
+											<!-- <a href="#landingPage"  class="btn waves-effect waves-light col s12 blue darken-4">Login</a> -->
+				          	</div>
+        				</div>
+	               	</form>
+							 </div>
+				  <center><a href="#signuppage" style="color: blue lighten-1; font-size: small;">Dont have an account? Click here!</a></center>
+
+				</div>
+			</div>
+		</div>
+ 			</div>
+
+
+			<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+				<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div><a href="#adminlogin" style="color: blue lighten-1; font-size: small;">Admin Portal</a></center>
+			</div>
+
+
+			</div><!-- /content -->
+
+
+
+
+
+
+
+			<div data-role="page" id="signuppage" class="blue lighten-4">
+
+				<div data-role="header" style="text-shadow: none" class="blue darken-4" style="height: 30%">
+					<div data-role="navbar">
+    <ul>
+      <li><a href="#login" data-iconpos="left">Back To Home</a></li>
+    </ul>
+  </div>
+				</div><!-- /header -->
+
+				<div data-role="content" style="text-shadow: none">
+
+
+					<div class="row">
+		 <div class="col s12 m6">
+			 <div class="card blue lighten">
+				 <div class="card-content blue-text z-depth-4 card-panel">
+									<form class="login" style="margin-top:30%;height:58%" action="" method="POST" onsubmit='validate()'>
+										 <center><div class="card-title">Sign up for <span style="color: #0d47a1; font-weight: bold;">CHERCHER</span><br></div><center>
+									 <input style="color: #0d47a1;" type="text" name="firstname" id="firstname" placeholder="Set Firstname"/>
+									 <input style="color: #0d47a1;" type="text" name="lastname" id="lastname" placeholder="Set Lastname"/>
+									 <input style="color: #0d47a1;" type="text" name="username" id="username" placeholder="Set Username"/>
+									 <input style="color: #0d47a1;" type="password" name="password" id="password" placeholder="Set Password"/>
+									 <input style="color: #0d47a1;" type="text" name="email" id="email" placeholder="Set Email"/>
+									 <input style="color: #0d47a1;" type="text" name="organization" id="organization" placeholder="Specify Organization"/>
+									 <input style="color: #0d47a1;" type="text" name="bank" id="bank" placeholder="Specify Your Bank"/>
+									 <input style="color: #0d47a1;" type="text" name="creditcard" id="creditcard" placeholder="Credit Card Number"/>
+									 <input style="color: #0d47a1;" type="text" name="telephone" id="telephone" placeholder="Set telephone(e.g 233201234567)"/>
+									 <input style="color: #0d47a1;" id="buttonAdd" type="button" onclick="addUser()"  name="SignUp" value="Sign Up">
+									 <!-- <br><a style="margin-left:20%;" id="pwordForgot" href="" onclick="email()"></a> -->
+									 </form>
+								 </div>
+					</div>
+				</div>
+			</div>
+				</div><!-- /content -->
+
+				</div><!-- /page -->
+
+
+
+
+				<div data-role="page" id="landingPage" >
+
+				<div data-role="header" class="white">
+
+							<div data-role="navbar" data-iconpos="left">
+								<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#login">
+
+									<img style="float:left!important;" src="img/back.png"
+									alt="" height="42" width="42"></a> CHERCHER
+						</div>
+
+					</div>
+				</div>
+
+					<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+
+
+			 		<div class="row col s12 m6">
+					 <div class="card-content blue-text z-depth-1 card-panel">
+						 <a href="#mapPage"><center class = ""><img src="img/discover.png"
+								 alt="" height="30" width="30"><br>Find Places</center></a>
+					 </div>
+					</div>
+
+					<div class="row col s12 m6">
+					 <div class="card-content blue-text z-depth-1 card-panel">
+						 <a href="#messagePage"><center class = ""><img src="img/contact.png"
+								 alt="" height="30" width="30"><br>Contact Us</center></a>
+					 </div>
+					</div>
+
+					<div class="row col s12 m6">
+					 <div class="card-content blue-text z-depth-1 card-panel">
+						  <a href="#"><center class = "">
+								<!-- <img src="img/school.png"
+									alt="" height="30" width="30"> -->
+									<br>UNAVAILABLE</center></a>
+					 </div>
+					</div>
+
+
+
+					</div><!-- /content -->
+
+						<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+							<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div><a href="#login">log out</a></center>
+						</div>
+
+					</div><!-- /page -->
+
+
+
+					<div data-role="page" id="messagePage" >
+
+					<div data-role="header" class="white">
+
+								<div data-role="navbar" data-iconpos="left">
+									<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#landingPage">
+
+										<img style="float:left!important;" src="img/back.png"
+										alt="" height="42" width="42"></a> CHERCHER
+							</div>
+
+						</div>
+					</div>
+
+						<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+							<div class="row">
+							<div class="col s12 m6">
+							<div class="card blue lighten">
+							<div id="booking" class="card-content blue-text z-depth-4 card-panel">
+
+
+											<form id = 'contactform' class="login" style="margin-top:30%;height:58%" action="" method="POST" onsubmit='validate()'>
+												 <center><div class="card-title">Send us a message! <span style="color: #0d47a1; font-weight: bold;"><br>We'd Love To Hear From You</span><br></div><center>
+											 <!-- <input style="color: #0d47a1;" type="text" name="name" id="name" placeholder="Contact Name"/> -->
+											  <textarea rows="10" cols="90" placeholder="Type your message here." name="messagearea" id="messagearea"></textarea>
+											 <div style = "color: #0d47a1"><b>Chercher</b> will contact you either by mail or phone depending on your particular issue. Your details are kept confidential and safe as usual!.</div>
+											 <input style="color: #0d47a1;" id="buttonAdd" type="button" onclick="sendContact()"  name="Book" value="Send Message">
+											 </form>
+
+										 </div>
+							</div>
+							</div>
+							</div>
+
+						</div><!-- /content -->
+
+						</div><!-- /page -->
+
+
+
+
+					<div data-role="page" id="mapPage" >
+
+							<div data-role="header" class="white">
+
+										<div data-role="navbar" data-iconpos="left">
+											<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#landingPage">
+
+												<img style="float:left!important;" src="img/back.png"
+												alt="" height="42" width="42"></a> CHERCHER
+									</div>
+
+
+
+
+										<ul class="collapsible" data-collapsible="accordion">
+										    <li>
+										      <div class="collapsible-header"><i class="material-icons"></i>Categories</div>
+										      <div class="collapsible-body">
+
+														<div class="row">
+
+															<a href="#" class="col s3" id="atm" value="atm" onclick="findATM();">
+																<img src="img/atm2.png" alt="Smiley face" height="30" width="30"><br>ATMs</a>
+															<a href="#" class=" col s3" id="bank" value="bank" onclick="findBank();">
+																<img src="img/bank.png" alt="Smiley face" height="30" width="30"><br>Banks</a>
+															<a href="#" class=" col s3" id="bar" value="bar" onclick="findBar();">
+																<img src="img/bar.png" alt="Smiley face" height="30" width="30"><br>Bars</a>
+															<a href="#" class=" col s3" id="food"value="food" onclick="findFood();">
+																<img src="img/restaurant.png" alt="Smiley face" height="30" width="30"><br>Food</a>
+															<a href="#" class="tab col s3" id="hospital"value="hospital" onclick="findHospital();">
+																<img src="img/hospital.png" alt="Smiley face" height="30" width="30"><br>Hosp.</a>
+															<a href="#" class="tab col s3" id="hotel"value="hotel" onclick="findHotel();">
+																<img src="img/hotel.png" alt="Smiley face" height="30" width="30"><br>Hotels</a>
+															<a href="#" class="tab col s3" id="police"value="police" onclick="findPolice();">
+																<img src="img/police.png" alt="Smiley face" height="30" width="30"><br>Police</a>
+																<a href="#" class="tab col s3" id="university"value="university" onclick="findUniversity();">
+																	<img src="img/school.png" alt="Smiley face" height="30" width="30"><br>Univ.</a>
+
+
+
+														 </div>
+
+
+
+													</div>
+										    </li>
+										</ul>
+
+												<br><input id="search" onchange="findAddress()" placeholder="      Search for a location"/>
+
+
+								</div>
+							</div>
+
+								<div data-role="content" style="text-shadow: none" class="white lighten-4">
+									<!-- <div data-role="content" style="text-shadow: none" class="blue lighten-4"> -->
+
+									<div id="atmorder" style="background-color: white; display:none;">
+
+										<!-- <center><img src="img/atm2.png" alt="Smiley face" height="30" width="30"></center>
+										<input style="color: #0d47a1;" type="text" name="bankname" id="bankatm" placeholder="Bank Name"/>
+ 									 	<input style="color: #0d47a1;" type="text" name="username" id="message" placeholder="Name on card"/>
+										<input style="color: #0d47a1;" type="text" name="username" id="message" placeholder="Phone Number"/>
+										<input style="color: #0d47a1;" id="buttonAdd" type="button" onclick="requestCard()"  name="Request Card Replacement" value="Sign Up"> -->
+
+									</div>
+
+
+									<div id="gmap_canvas"></div>
+
+
+
+
+									<!-- <ul class="collapsible" data-collapsible="accordion">
+											<li>
+												<div class="collapsible-header"><i class="material-icons"></i>Directory</div> -->
+
+											<!-- </li>
+									</ul> -->
+
+									<ul class="collapsible" data-collapsible="accordion">
+									 <li>
+										 <div class="collapsible-header"><i class="material-icons"></i>Directory</div>
+										 <div class="collapsible-body">
+											 <div id = "list1"></div>
+											 <div id = "list">Select a category in the places tab to geenerate a directory.</div>
+									 </div>
+									 </li>
+								 </ul>
+
+
+										<input type="hidden" id="lat" name="lat" value="5.668184" />
+										<input type="hidden" id="lng" name="lng" value="-0.238534" />
+
+										<!-- <div id="button1" class="button" onclick="findPlaces(); return false;">Search for objects</div> -->
+										</div>
+
+
+
+
+
+						</div><!-- /page -->
+
+
+
+
+
+
+
+
+						<div data-role="page" id="bookingpage" class="blue lighten-4">
+
+							<div data-role="header" style="text-shadow: none" class="blue darken-4" style="height: 30%">
+								<div data-role="navbar">
+					<ul>
+						<li><a href="#mapPage" data-iconpos="left">Back To Map Page</a></li>
+					</ul>
+				</div>
+							</div><!-- /header -->
+
+							<div data-role="content" style="text-shadow: none">
+
+
+								<div class="row">
+					 <div class="col s12 m6">
+						 <div class="card blue lighten">
+							 <div id="booking" class="card-content blue-text z-depth-4 card-panel">
+												<form class="login" style="margin-top:30%;height:58%" action="" method="POST" onsubmit='validate()'>
+													 <center><div class="card-title">Book a Hotel with <span style="color: #0d47a1; font-weight: bold;">CHERCHER</span><br></div><center>
+												 <input style="color: #0d47a1;" type="text" name="hotelname" id="hotelname" placeholder="Hotel Name"/>
+												 <input style="color: #0d47a1;" type="text" name="occupants" id="occupants" placeholder="Number of Occupants / Specify room size preferred"/>
+												 <input style="color: #0d47a1;" type="date" name="checkindate" id="checkindate" placeholder="Check In Date"/>
+												 <input style="color: #0d47a1;" type="date" name="checkoutdate" id="checkoutdate" placeholder="Check out Date"/>
+												 <!-- <input style="color: #0d47a1;" type="text" name="telephone" id="telephone" placeholder="Confirm telephone(e.g 233201234567)"/> -->
+												 <div style = "color: #0d47a1">Chercher will make the booking on your behalf. Just sit back and let us make your life easy.</div>
+												 <input style="color: #0d47a1;" id="buttonAdd" type="button" onclick="addBooking()"  name="Book" value="Confirm Booking">
+												 </form>
+											 </div>
+								</div>
+							</div>
+						</div>
+
+
+							</div><!-- /content -->
+
+
+
+							</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+							<div data-role="page" id="adminlogin" class="blue lighten-4">
+
+								 <!-- <div data-role="header" style="text-shadow: none">
+
+								</div> -->
+
+								<div data-role="content" style="text-shadow: none">
+
+
+									<div  style="padding-top: 20%;">
+						 <div class="col s12">
+							 <div class="card lighten-2 z-depth-4 card-panel">
+								 <div class="card-content">
+													<form class="login-form" style="margin-top:10%;height:58%;" action="" method="POST" onsubmit='validate()'>
+														 <center><div class="card-title"> <span style="color: #0d47a1; font-weight: bold; font-size: x-large; face:capitals">CHERCHER</span><br><br>Admin</div><center>
+													 <img src="img/user.png" height="40"><input style="color: #0d47a1;" type="text" name="username" id="Username" placeholder="Enter Username"/>
+													 <img src="img/password.png" height="35"><input style="color: #0d47a1;" type="password" name="password" id="Password" placeholder="Enter Password"/>
+													 <!-- <input class="btn waves-effect blue lighten-1" style="color: red;" id="buttonAdd" type="button" onclick="LoginUser()"  name="Login" value="Log In"> -->
+													 <!-- <br><a style="margin-left:20%;" id="pwordForgot" href="" onclick="email()"></a> -->
+													 <div class="row">
+															<div class="input-field col s12">
+																<a href="#" onclick="AdminLoginUser()" class="btn waves-effect waves-light col s12 blue darken-4">Login</a>
+																<!-- <a href="#landingPage"  class="btn waves-effect waves-light col s12 blue darken-4">Login</a> -->
+															</div>
+													</div>
+														</form>
+												 </div>
+										<center><a href="#signuppage" style="color: blue lighten-1; font-size: small;">Dont have an account? Click here!</a></center>
+									</div>
+								</div>
+							</div>
+								</div>
+
+
+								<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+									<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div><a href="#login" style="color: blue lighten-1; font-size: small;">User Portal</a></center>
+								</div>
+
+
+								</div><!-- /content -->
+
+
+
+
+
+
+
+
+
+
+								<div data-role="page" id="adminlandingPage" >
+
+								<div data-role="header" class="white">
+
+											<div data-role="navbar" data-iconpos="left">
+												<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#adminlogin">
+
+													<img style="float:left!important;" src="img/back.png"
+													alt="" height="42" width="42"></a> CHERCHER Admin
+										</div>
+
+									</div>
+								</div>
+
+									<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+
+
+							 		<div class="row col s12 m6">
+									 <div class="card-content blue-text z-depth-1 card-panel">
+										 <a href="#viewbooking"><center class = ""><img src="img/finder.png"
+												 alt="" height="30" width="30" onlick="fetchBooks()"><br>View Bookings</center></a>
+									 </div>
+									</div>
+
+									<div class="row col s12 m6">
+									 <div class="card-content blue-text z-depth-1 card-panel">
+										 <a href="#viewrequest"><center class = ""><img src="img/card.png"
+												 alt="" height="30" width="30"><br>View ATM Card Requests</center></a>
+									 </div>
+									</div>
+
+									<!-- <div class="row col s12 m6">
+									 <div class="card-content blue-text z-depth-1 card-panel">
+										  <a href="#handleusers"><center class = "">
+												<img src="img/user.png"
+													alt="" height="30" width="30">
+													<br>Handle Users</center></a>
+									 </div>
+									</div> -->
+
+
+
+									</div><!-- /content -->
+
+										<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+											<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div><a href="#adminlogin">log out</a></center>
+										</div>
+
+									</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+
+									<div data-role="page" id="viewbooking" >
+
+									<div data-role="header" class="white">
+
+												<div data-role="navbar" data-iconpos="left">
+													<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#adminlandingPage">
+
+														<img style="float:left!important;" src="img/back.png"
+														alt="" height="42" width="42"></a> CHERCHER Admin
+											</div>
+
+										</div>
+									</div>
+
+										<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+											<div id="bookingcontent"></div>
+
+											<center><a href= "#"  class= "btn waves-effect blue lighten-1" onclick="getBooks()">Display Bookings</a></center>
+
+
+
+
+										</div><!-- /content -->
+
+										<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+											<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div></center>
+										</div>
+
+										</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<div data-role="page" id="viewrequest" >
+
+										<div data-role="header" class="white">
+
+													<div data-role="navbar" data-iconpos="left">
+														<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#adminlandingPage">
+
+															<img style="float:left!important;" src="img/back.png"
+															alt="" height="42" width="42"></a> CHERCHER Admin
+												</div>
+
+											</div>
+										</div>
+
+											<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+												<div id="cardcontent"></div>
+
+												<center><a href= "#"  class= "btn waves-effect blue lighten-1" onclick="getRequests()">Display Requests</a></center>
+
+
+											</div><!-- /content -->
+
+											<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+												<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div></center>
+											</div>
+
+											</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+											<div data-role="page" id="handleusers" >
+
+											<div data-role="header" class="white">
+
+														<div data-role="navbar" data-iconpos="left">
+															<div class="card-title"style=" color: #0d47a1;  font-weight: bold; " ><a href="#adminlandingPage">
+
+																<img style="float:left!important;" src="img/back.png"
+																alt="" height="42" width="42"></a> CHERCHER Admin
+													</div>
+
+												</div>
+											</div>
+
+												<div data-role="content" style="text-shadow: none" class="blue lighten-4">
+
+
+
+												</div><!-- /content -->
+
+												<div data-role="footer" style="text-shadow: none" class="blue darken-4">
+													<center><div class= "white-text" style="padding-top:30%"> Copyright 2016 Chipper Labs - A Subsidiary of Moujaled Tech Global</div></center>
+												</div>
+
+												</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrtUsFFUKE_DCSjYwPrpmEPe7ET2EgD-8&libraries=places&sensor=false"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<script type="text/javascript" src="cordova.js"></script>
+			<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+			<!-- <script type="text/javascript" src="js/script.js"></script> -->
+			<script type="text/javascript" src="framework.js"></script>
+			<!--Import jQuery before materialize.js-->
+		 <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+		 <script type="text/javascript" src="js/materialize.min.js"></script>
+		 <script type="text/javascript" src="js/materialize.js"></script>
+		 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+		 <script type="text/javascript" src="js/bootstrap.js"></script>
+
+	</body>
+</html>
