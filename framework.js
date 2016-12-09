@@ -24,12 +24,12 @@ $(document).ready(
 
 
 
-(function() {
-
-//barcode scanner
-
-	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-	function onDeviceReady() {
+// function scanBar(){
+//
+// //barcode scanner
+//
+// 	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+// 	function onDeviceReady() {
 
 
 		document.getElementById("barcodeScanner").onclick = function(){
@@ -55,10 +55,10 @@ $(document).ready(
 
 
 
-	}
-	} ;
-
-	})();
+};
+	// } ;
+  //
+	// }
 
 
 
