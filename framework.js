@@ -829,19 +829,19 @@ function email(){
 *Redirects to the home page after login
 **/
 function LoginComplete(xhr,status){
-  var obj = $.parseJSON(xhr.responseText);
-  console.log(obj);
-  console.log("here2");
-
-  if(obj.result==1){
-    console.log(obj.result);
-    console.log(obj.username);
-    sessionStorage.username=obj.username;
-    sessionStorage.password=obj.password;
-    sessionStorage.bank=obj.bank;
-    // sessionStorage.id=obj.username;
-    console.log(sessionStorage.username);
-    console.log(sessionStorage.password);
+  // var obj = $.parseJSON(xhr.responseText);
+  // console.log(obj);
+  // console.log("here2");
+  //
+  // if(obj.result==1){
+  //   console.log(obj.result);
+  //   console.log(obj.username);
+  //   sessionStorage.username=obj.username;
+  //   sessionStorage.password=obj.password;
+  //   sessionStorage.bank=obj.bank;
+  //   // sessionStorage.id=obj.username;
+  //   console.log(sessionStorage.username);
+  //   console.log(sessionStorage.password);
 
     window.location="#landingPage";
   }
@@ -856,7 +856,7 @@ function LoginComplete(xhr,status){
 function LoginUser(){
   var username=$("#Username").val();
   var password=$("#Password").val();
-  var theUrl="frameajax.php?cmd=6&username="+username+"&password="+password;
+  // var theUrl="frameajax.php?cmd=6&username="+username+"&password="+password;
 //  prompt("url", theUrl);
   $.ajax(theUrl,{
     async:true,
