@@ -24,7 +24,8 @@ $(document).ready(
 
 
 
-(function() {
+function scanbarcode()
+{
 
 //barcode scanner
 
@@ -58,7 +59,7 @@ $(document).ready(
 	}
 	} ;
 
-	})();
+	}
 
 
 
