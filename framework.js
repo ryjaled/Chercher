@@ -1,4 +1,3 @@
-(function() {
 var geocoder;
 var map;
 var markers = Array();
@@ -18,56 +17,6 @@ $(document).ready(
   });
  }
 );
-
-
-
-
-
-
-(function() {
-
-//barcode scanner
-
-	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-	function onDeviceReady() {
-
-
-		document.getElementById("barcodeScanner").onclick = function(){
-			//alert("here");
-			cordova.plugins.barcodeScanner.scan(
-		 function (result) {
-				 alert("We got a barcode\n" +
-							 "Result: " + result.text + "\n" +
-							 "Format: " + result.format + "\n" +
-							 "Cancelled: " + result.cancelled);
-		 },
-		 function (error) {
-				 alert("Scanning failed: " + error);
-		 },
-		 {
-				 "preferFrontCamera" : true, // iOS and Android
-				 "showFlipCameraButton" : true, // iOS and Android
-				 "prompt" : "Place a barcode inside the scan area", // supported on Android only
-				 "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-				 "orientation" : "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
-		 }
-	);
-
-
-
-	}
-	} ;
-
-	})();
-
-
-	// } ;
-  //
-	// }
-
-
-
-
 
 function myLocation() {
 
@@ -744,7 +693,7 @@ function addBooking()
     // alert(telephone);
 
 
-    var theUrl="frameajax.php?cmd=10&hotelname="+hotelname+
+    var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=10&hotelname="+hotelname+
     "&occupants="+occupants+"&checkindate="+checkindate+"&checkoutdate="
     +checkoutdate;
 
@@ -770,7 +719,7 @@ function sendContact()
   // var name = $("#name").val();
   var messagearea = $("#messagearea").val();
 
-  var theUrl="frameajax.php?cmd=11&messagearea="+messagearea+"&username="+username;
+  var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=11&messagearea="+messagearea+"&username="+username;
 
   $.ajax(theUrl,{
     async:true,
@@ -805,7 +754,7 @@ function submitAdminCardRequest(username, bank)
 {
   console.log(username);
   console.log(bank);
-  var theUrl="frameajax.php?cmd=9&username="+username+"&bank="+bank;
+  var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=9&username="+username+"&bank="+bank;
 
   $.ajax(theUrl,{
     async:true,
@@ -836,19 +785,21 @@ function email(){
 *Redirects to the home page after login
 **/
 function LoginComplete(xhr,status){
-  // var obj = $.parseJSON(xhr.responseText);
-  // console.log(obj);
-  // console.log("here2");
-  //
-  // if(obj.result==1){
-  //   console.log(obj.result);
-  //   console.log(obj.username);
-  //   sessionStorage.username=obj.username;
-  //   sessionStorage.password=obj.password;
-  //   sessionStorage.bank=obj.bank;
-  //   // sessionStorage.id=obj.username;
-  //   console.log(sessionStorage.username);
-  //   console.log(sessionStorage.password);
+  console.log(xhr.responseText);
+console.log("here1");
+  var obj = JSON.parse(xhr.responseText);
+  console.log(obj);
+  console.log("here2");
+
+  if(obj.result==1){
+    console.log(obj.result);
+    console.log(obj.username);
+    sessionStorage.username=obj.username;
+    sessionStorage.password=obj.password;
+    sessionStorage.bank=obj.bank;
+    // sessionStorage.id=obj.username;
+    console.log(sessionStorage.username);
+    console.log(sessionStorage.password);
 
     window.location="#landingPage";
   }
@@ -863,7 +814,7 @@ function LoginComplete(xhr,status){
 function LoginUser(){
   var username=$("#Username").val();
   var password=$("#Password").val();
-  var theUrl="frameajax.php?cmd=6&username="+username+"&password="+password;
+  var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=6&username="+username+"&password="+password;
 //  prompt("url", theUrl);
   $.ajax(theUrl,{
     async:true,
@@ -888,7 +839,7 @@ function AdminLoginComplete(xhr,status){
 function AdminLoginUser(){
   var username=$("#Username").val();
   var password=$("#Password").val();
- var theUrl="frameajax.php?cmd=12&username="+username+"&password="+password;
+ var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=12&username="+username+"&password="+password;
  // prompt("url", theUrl);
   $.ajax(theUrl,{
     async:true,
@@ -946,7 +897,7 @@ function addUser(){
   var telephone = $("#telephone").val();
 
 
-  var theUrl="frameajax.php?cmd=5&firstname="+firstname+
+  var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=5&firstname="+firstname+
   "&lastname="+lastname+"&username="+username+"&password="
   +password+"&email="+email+"&organization="+organization+"&bank="+bank+"&creditcard="+creditcard+"&telephone="+telephone;
 
@@ -1081,7 +1032,7 @@ function getReport(){
 
 function getBooks(){
     // var i = sessionStorage.id;
-    var theUrl="frameajax.php?cmd=2";
+    var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=2";
 
     $.ajax(theUrl,
       {async:true,
@@ -1103,19 +1054,19 @@ if(obj!=null){
 
   // console.log("here");
 
-  values = values+"<table style = 'font-size: small' class='stripped card-content'><thead><tr><th>Date</th><th>Username</th><th>Bank</th>";
+  rvalues = rvalues+"<table style = 'font-size: small' class='stripped card-content'><thead><tr><th>Date</th><th>Username</th><th>Bank</th>";
     for (var i = 0; i < obj.length; i++)
     {
 
 
 
-      values=values+"</tr></thead><tbody><tr><td>"+obj[i].DATE+"</td><td>"+obj[i].USERNAME+"</td><td>"+obj[i].BANK+"</td></tr>";
+      rvalues=rvalues+"</tr></thead><tbody><tr><td>"+obj[i].DATE+"</td><td>"+obj[i].USERNAME+"</td><td>"+obj[i].BANK+"</td></tr>";
 
       // console.log(values);
 
 
     }
-    values = values + "</tbody></table>";
+    rvalues = rvalues + "</tbody></table>";
     document.getElementById('cardcontent').innerHTML = values;
 
 
@@ -1125,7 +1076,7 @@ if(obj!=null){
 
 function getRequests(){
     // var i = sessionStorage.id;
-    var theUrl="frameajax.php?cmd=3";
+    var theUrl="http://52.89.116.249/~ryan.moujaled/Cherch/frameajax.php?cmd=3";
 
     $.ajax(theUrl,
       {async:true,
@@ -1152,11 +1103,10 @@ alert("here");
 
 
 //Tool tip for editing information
-// $(function() {
-//   $('.content').hover(function() {
-//     $('#edit_info').css('display', 'block');
-//   }, function() {
-//     $('#edit_info').css('display', 'none');
-//   });
-// });
-})(window);
+$(function() {
+  $('.content').hover(function() {
+    $('#edit_info').css('display', 'block');
+  }, function() {
+    $('#edit_info').css('display', 'none');
+  });
+});
