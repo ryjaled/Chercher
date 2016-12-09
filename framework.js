@@ -1,3 +1,4 @@
+(function() {
 var geocoder;
 var map;
 var markers = Array();
@@ -23,13 +24,12 @@ $(document).ready(
 
 
 
+(function() {
 
-// function scanBar(){
-//
-// //barcode scanner
-//
-// 	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-// 	function onDeviceReady() {
+//barcode scanner
+
+	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+	function onDeviceReady() {
 
 
 		document.getElementById("barcodeScanner").onclick = function(){
@@ -55,7 +55,12 @@ $(document).ready(
 
 
 
-};
+	}
+	} ;
+
+	})();
+
+
 	// } ;
   //
 	// }
@@ -1147,10 +1152,11 @@ alert("here");
 
 
 //Tool tip for editing information
-$(function() {
-  $('.content').hover(function() {
-    $('#edit_info').css('display', 'block');
-  }, function() {
-    $('#edit_info').css('display', 'none');
-  });
-});
+// $(function() {
+//   $('.content').hover(function() {
+//     $('#edit_info').css('display', 'block');
+//   }, function() {
+//     $('#edit_info').css('display', 'none');
+//   });
+// });
+})(window);
