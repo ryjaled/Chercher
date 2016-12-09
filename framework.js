@@ -856,7 +856,7 @@ function LoginComplete(xhr,status){
 function LoginUser(){
   var username=$("#Username").val();
   var password=$("#Password").val();
-  // var theUrl="frameajax.php?cmd=6&username="+username+"&password="+password;
+  var theUrl="frameajax.php?cmd=6&username="+username+"&password="+password;
 //  prompt("url", theUrl);
   $.ajax(theUrl,{
     async:true,
